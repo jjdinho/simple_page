@@ -1,0 +1,9 @@
+<nav class="bg-sky-700 w-100 flex flex-col items-start justify-start md:flex-row md:items-center md:justify-between text-white p-4">
+  <div>
+    SimplePage
+  </div>
+  <div class="grid grid-rows-2 md:grid-rows-none md:grid-cols-2 gap-4">
+    <%= link_to 'Log in', new_user_session_path %>
+    <%= link_to 'Sign up', new_user_registration_path %>
+  </div>
+</nav>

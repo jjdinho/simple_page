@@ -1,0 +1,5 @@
+<%= form_with url: pages_create_path, method: :post do |form| %>
+  <%= form.text_field :page_name %>
+  <%= form.text_area :page_html %>
+  <%= form.submit "Save" %>
+<% end %>
