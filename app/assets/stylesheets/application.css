@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+
+.cm-editor {
+    width: 100%;
+    max-width: calc(100vw - 2.5rem);
+    border: 1px solid rgb(226 232 240);
+    border-radius: 0.5rem;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.cm-gutters {
+    border-bottom-left-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+}
+
+.ͼ2 .cm-gutters {
+    background-color: rgb(226 232 240);
+}
+
+.CodeMirror {
+    font-family: Arial, monospace;
+    font-size: 16px;
+}
