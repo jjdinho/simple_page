@@ -60,7 +60,7 @@ class PagesController < ApplicationController
       content_security_policy_meta_tag = "<meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'self'; img-src https://*; style-src 'unsafe-inline'; script-src 'none';\">"
       header_tag << content_security_policy_meta_tag
 
-      path_to_file = Rails.root.join("public/#{page_name}.html")
+      path_to_file = Rails.root.join("#{ENV['PUBLIC_PATH']}/#{page_name}.html")
       if File.exists?(path_to_file)
         successful_save = false
       else
@@ -90,7 +90,7 @@ class PagesController < ApplicationController
   def edit
     @page = current_user.pages.find(params[:id])
 
-    file_path = Rails.root.join("public/#{@page.name}.html")
+    file_path = Rails.root.join("#{ENV['PUBLIC_PATH']}/#{@page.name}.html")
     @page_html = Nokogiri::HTML.parse(file_path).to_html
   end
 
@@ -165,9 +165,9 @@ class PagesController < ApplicationController
       content_security_policy_meta_tag = "<meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'self'; img-src https://*; style-src 'unsafe-inline'; script-src 'none';\">"
       header_tag << content_security_policy_meta_tag
 
-      path_to_file = Rails.root.join("public/#{page_name}.html")
+      path_to_file = Rails.root.join("#{ENV['PUBLIC_PATH']}/#{page_name}.html")
       if @page.will_save_change_to_name?
-        path_to_old_file = Rails.root.join("public/#{@page.name_was}.html")
+        path_to_old_file = Rails.root.join("#{ENV['PUBLIC_PATH']}/#{@page.name_was}.html")
         File.delete(path_to_old_file)
       end
       successful_save = File.write(path_to_file, doc.to_html)
@@ -212,7 +212,7 @@ class PagesController < ApplicationController
   private
 
   def destroy_html_file(page_name)
-    path_to_file = Rails.root.join("public/#{page_name}.html")
+    path_to_file = Rails.root.join("#{ENV['PUBLIC_PATH']}/#{page_name}.html")
     if File.exist?(path_to_file)
       File.delete(path_to_file)
     else
