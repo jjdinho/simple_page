@@ -53,11 +53,13 @@ export default class extends Controller {
       parent: codeEditor
     })
 
-    const submitButton = document.querySelector("input[type=\"submit\"]")
+    // For both "Create/Update" and "Preview" buttons
+    const submitButtons = document.querySelectorAll("input[type=\"submit\"]")
 
-    submitButton.addEventListener('click', (event) => {
-      textArea.value = view.state.sliceDoc();
-      console.log(textArea.value);
+    submitButtons.forEach((submitButton) => {
+      submitButton.addEventListener('click', (event) => {
+        textArea.value = view.state.sliceDoc();
+      })
     })
   }
 }

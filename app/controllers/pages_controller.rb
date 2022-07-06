@@ -1,5 +1,8 @@
 class PagesController < ApplicationController
   before_action :authenticate_user!
+  protect_from_forgery with: :null_session, only: :preview
+
+  include ActionView::Helpers::OutputSafetyHelper
 
   def index
     @pages = current_user.pages
@@ -89,6 +92,29 @@ class PagesController < ApplicationController
 
     file_path = Rails.root.join("public/#{@page.name}.html")
     @page_html = Nokogiri::HTML.parse(file_path).to_html
+  end
+
+  def preview
+    page_html = params[:page_html]
+    doc = Nokogiri::HTML.parse(page_html)
+    doc.search('script').each do |script|
+      script.remove
+    end
+
+    existing_content_security_policy_meta_tag = doc.css("meta[http-equiv=\"Content-Security-Policy\"]")
+    if existing_content_security_policy_meta_tag.length > 0
+      existing_content_security_policy_meta_tag.each do |tag|
+        tag.remove
+      end
+    end
+
+    header_tag = doc.search('head').first
+    content_security_policy_meta_tag = "<meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'self'; img-src https://*; style-src 'unsafe-inline'; script-src 'none';\">"
+    header_tag << content_security_policy_meta_tag
+
+    raw_html = raw(doc.to_html)
+
+    render layout: false, html: raw_html
   end
 
   def update
