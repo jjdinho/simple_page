@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: simple_page_production
-  username: simple_page
-  password: <%= ENV["SIMPLE_PAGE_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>

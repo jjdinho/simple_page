@@ -1,6 +1,8 @@
 <nav class="w-100 p-4">
   <div class="container mx-auto max-w-7xl flex flex-col items-start justify-start md:flex-row md:items-center md:justify-between text-white">
-    <h3 class="block font-bold text-2xl pr-4 py-2 text-liberty">SimplePage</h3>
+    <%= link_to root_path do %>
+      <h3 class="block font-bold text-2xl pr-4 py-2 text-transparent bg-clip-text bg-gradient-to-b from-tan-400 to-tan-500">SimplePage</h3>
+    <% end %>
     <div class="flex flex-col md:flex-row">
       <% if user_signed_in? %>
         <%= link_to 'My pages', pages_index_path, class: 'w-max text-slate-700 text-lg font-semibold px-4 py-2 mr-2 rounded-lg hover:shadow-xl hover:ring-offset-2 hover:ring hover:ring-tan focus:text-white focus:bg-tan' %>
