@@ -18,5 +18,15 @@ module SimplePage
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    if Rails.env.production?
+      # Expose static disk to web server
+      config.middleware.insert_after(
+          ActionDispatch::Static,
+          ActionDispatch::Static,
+          Rails.root.join("../../../../static").to_s,
+          Rails.application.config.static_cache_control
+      )
+    end
   end
 end

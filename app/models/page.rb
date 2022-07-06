@@ -12,7 +12,7 @@ class Page < ApplicationRecord
   end
 
   def size
-    path_to_file = Rails.root.join("public/#{name}.html")
+    path_to_file = Rails.root.join("#{ENV['PUBLIC_PATH']}/#{name}.html")
 
     return unless File.exists?(path_to_file)
 
