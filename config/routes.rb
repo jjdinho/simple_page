@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post 'pages/create'
   get 'pages/:id/created', to: 'pages#created', as: 'pages_created'
   get 'pages/:id/edit', to: 'pages#edit', as: 'pages_edit'
-  patch 'pages/preview', to: 'pages#preview', as: 'pages_preview'
+  post 'pages/preview', to: 'pages#preview', as: 'pages_preview'
   patch 'pages/:id/update', to: 'pages#update', as: 'pages_update'
   delete 'pages/:id/delete', to: 'pages#destroy', as: 'pages_destroy'
   get 'pages/:id/show_confirmation_modal_for_delete', to: 'pages#show_confirmation_modal_for_delete', as: 'pages_show_confirmation_modal_for_delete'

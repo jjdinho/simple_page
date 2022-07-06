@@ -1,11 +1,11 @@
-<%= form_with url: pages_update_path(@page.id), method: :patch do |form| %>
+<%= form_with url: pages_update_path(@page.id) do |form| %>
   <div class="w-full flex items-end mb-4">
     <div class="w-full">
       <%= form.label :page_name, "Page name (#{ENV['ROOT_URL']}/#{@page.name})", class: "block text-sm font-medium text-slate-500 mb-2" %>
       <%= form.text_field :page_name, placeholder: 'My_page_name', value: @page.name, class: 'flex-grow placeholder:text-slate-400 text-lg shadow appearance-none border border-slate-300 rounded-lg w-full px-4 py-2 text-slate-700 focus:outline-none focus:border-liberty-500' %>
     </div>
-    <%= form.submit "Preview", formaction: pages_preview_path, formtarget: :_blank, data: { turbo: false }, class: 'ml-4 flex-none w-max h-max text-slate-500 bg-white cursor-pointer border-2 border-slate-400 text-lg font-semibold px-4 py-2 rounded-lg hover:shadow-xl hover:ring-offset-2 hover:ring hover:ring-slate-400 focus:text-white focus:bg-slate-400' %>
-    <%= form.submit "Update", class: 'ml-4 flex-none w-max h-max text-white bg-liberty cursor-pointer border-2 border-transparent text-lg font-semibold px-4 py-2 rounded-lg hover:shadow-xl hover:ring-offset-2 hover:ring hover:ring-liberty focus:text-white focus:bg-liberty' %>
+    <%= form.submit "Preview", formaction: pages_preview_path, formtarget: :_blank, formmethod: 'post', data: { turbo: false }, class: 'ml-4 flex-none w-max h-max text-slate-500 bg-white cursor-pointer border-2 border-slate-400 text-lg font-semibold px-4 py-2 rounded-lg hover:shadow-xl hover:ring-offset-2 hover:ring hover:ring-slate-400 focus:text-white focus:bg-slate-400' %>
+    <%= form.submit "Update", formmethod: 'patch', class: 'ml-4 flex-none w-max h-max text-white bg-liberty cursor-pointer border-2 border-transparent text-lg font-semibold px-4 py-2 rounded-lg hover:shadow-xl hover:ring-offset-2 hover:ring hover:ring-liberty focus:text-white focus:bg-liberty' %>
   </div>
 
   <div class="w-full mb-10" data-controller="code-editor">
