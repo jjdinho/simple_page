@@ -1,10 +1,14 @@
-<div>
-  <h1 class="font-bold text-4xl">Pages#index</h1>
-  <p class="mb-8">Find me in app/views/pages/index.html.erb</p>
+<div class="mt-4">
 
-  <% if @pages.any? %>
-    <%= link_to 'New page', pages_new_path, class: "float-right mb-4 w-max h-max text-white bg-liberty cursor-pointer border-2 border-transparent text-lg font-semibold px-4 py-2 rounded-lg hover:shadow-xl hover:ring-offset-2 hover:ring hover:ring-liberty focus:text-white focus:bg-liberty" %>
-  <% end %>
+  <div class="w-full mb-4 flex items-end justify-between">
+    <h1 class="block font-bold text-slate-500 text-xl float-left">My pages</h1>
+    <% if @pages.any? %>
+      <%= link_to 'New page', pages_new_path, disabled: true, class: "w-max h-max text-white bg-liberty cursor-pointer border-2 border-transparent text-lg font-semibold px-4 py-2 rounded-lg hover:shadow-xl hover:ring-offset-2 hover:ring hover:ring-liberty focus:text-white focus:bg-liberty" %>
+    <% end %>
+  </div>
+
+
+
 
   <table class="mb-8 shadow-xl table-fixed w-full border-collapse">
     <thead class="font-medium text-base bg-slate-200">
@@ -23,9 +27,9 @@
         <td class="border-b border-slate-200 p-4">
           <%= link_to page.name, page.path, target: :_blank, data: { turbo: false }, class: "font-semibold underline hover:text-slate-500" %>
         </td>
-        <td class="border-b border-slate-200 p-4"><%= number_to_human_size(page.size) %></td>
-        <td class="hidden md:table-cell border-b border-slate-200 p-4"><%= time_ago_in_words(page.created_at) %> ago</td>
-        <td class="hidden sm:table-cell border-b border-slate-200 p-4"><%= time_ago_in_words(page.updated_at) %> ago</td>
+        <td class="border-b border-slate-200 p-4 text-slate-700"><%= number_to_human_size(page.size) %></td>
+        <td class="hidden md:table-cell border-b border-slate-200 p-4 text-slate-700"><%= time_ago_in_words(page.created_at) %> ago</td>
+        <td class="hidden sm:table-cell border-b border-slate-200 p-4 text-slate-700"><%= time_ago_in_words(page.updated_at) %> ago</td>
         <td class="border-b border-slate-200 p-4 ml-auto">
           <div class="flex items-center justify-end">
             <%= link_to pages_edit_path(page.id), class: 'text-slate-400 hover:text-slate-500 font-medium flex justify-center items-center mr-12' do %>
@@ -35,7 +39,7 @@
               </svg>
               <span class="underline">Edit</span>
             <% end %>
-            <%= link_to pages_show_confirmation_modal_for_delete_path(page.id), class: 'text-red-200 hover:text-red-500 font-medium flex justify-center items-center' do %>
+            <%= link_to pages_show_confirmation_modal_for_delete_path(page.id), data: { turbo_frame: :modal }, class: 'text-red-200 hover:text-red-500 font-medium flex justify-center items-center' do %>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
               </svg>

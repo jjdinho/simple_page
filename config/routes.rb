@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'pages/index'
   get 'pages/new'
   post 'pages/create'
+  get 'pages/:id/created', to: 'pages#created', as: 'pages_created'
   get 'pages/:id/edit', to: 'pages#edit', as: 'pages_edit'
   patch 'pages/:id/update', to: 'pages#update', as: 'pages_update'
   delete 'pages/:id/delete', to: 'pages#destroy', as: 'pages_destroy'

@@ -74,10 +74,14 @@ class PagesController < ApplicationController
     # turbo_stream.append(:flash_notification_container, partial: 'shared/flash', locals: { kind: :info, content: "Trying to create the page..." })
 
     if successful_save
-      render turbo_stream: turbo_stream.append(:flash_notification_container, partial: 'shared/flash', locals: { kind: :notice, content: "Success! You can visit your at page <a class='text-slate-500 hover:underline' href='#{ENV['ROOT_URL']}/#{page_name}' target='_blank'>localhost:3000/#{page_name}</a>" })
+      redirect_to pages_created_path(@page.id)
     else
       render turbo_stream: turbo_stream.append(:flash_notification_container, partial: 'shared/flash', locals: { kind: :alert, content: error_message})
     end
+  end
+
+  def created
+    @page = current_user.pages.find(params[:id])
   end
 
   def edit

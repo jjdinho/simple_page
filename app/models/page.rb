@@ -1,7 +1,7 @@
 class Page < ApplicationRecord
   belongs_to :user
 
-  validates :name, presence: true, uniqueness: { message: 'already exists, try another page name.' }, format: { with: /\A[a-zA-Z0-9\-_]*\z/, message: 'no special characters allowed, only letters and numbers' }
+  validates :name, presence: true, uniqueness: { message: 'already exists, try another page name.' }, format: { with: /\A[a-zA-Z0-9\-_]*\z/, message: 'can only contain letters and numbers. Special characters and whitespace is not allowed.' }
 
   def path
     "/#{name}"
