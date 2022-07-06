@@ -1,6 +1,6 @@
 <div class="mx-auto mt-8">
   <h1 class="mb-12 text-4xl font-bold text-slate-700 text-center">🎉 Success! Your page was created </h1>
-  <%= link_to @path.path, class: "block mx-auto mb-16 w-max h-max text-white bg-liberty cursor-pointer border-2 border-transparent text-lg font-medium px-6 py-3 rounded-lg hover:shadow-xl hover:ring-offset-2 hover:ring hover:ring-liberty focus:text-white focus:bg-liberty" do %>
+  <%= link_to @page.path, class: "block mx-auto mb-16 w-max h-max text-white bg-liberty cursor-pointer border-2 border-transparent text-lg font-medium px-6 py-3 rounded-lg hover:shadow-xl hover:ring-offset-2 hover:ring hover:ring-liberty focus:text-white focus:bg-liberty" do %>
     Visit my page at <span class="font-semibold underline"><%= @page.url %></span>
   <% end %>
 
