@@ -24,8 +24,7 @@ module SimplePage
       config.middleware.insert_after(
           ActionDispatch::Static,
           ActionDispatch::Static,
-          Rails.root.join("../../../../static").to_s,
-          Rails.application.config.static_cache_control
+          Rails.root.join("../../../../static").to_s
       )
     end
   end
