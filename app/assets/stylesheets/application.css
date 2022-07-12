@@ -37,7 +37,6 @@
     background-color: rgb(226 232 240);
 }
 
-.CodeMirror {
-    font-family: Arial, monospace;
-    font-size: 16px;
+.ͼ1.cm-editor.cm-focused  {
+    outline: 1px solid rgb(51 65 85);
 }
